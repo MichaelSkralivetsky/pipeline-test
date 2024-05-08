@@ -57,7 +57,7 @@ spec:
   source: /User/test/proj1
   workflows:
   - name: iris_workflow
-    path: workflow.py
+    path: ./workflow.py
   desired_state: online
   load_source_on_run: false
 kind: project
