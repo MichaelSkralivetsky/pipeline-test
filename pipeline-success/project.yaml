@@ -1,0 +1,68 @@
+spec:
+  owner: normal-user
+  functions:
+  - name: nrqhh
+    spec:
+      spec:
+        state_thresholds:
+          pending_scheduled: 1h
+          pending_not_scheduled: '-1'
+          image_pull_backoff: 1h
+          executing: 24h
+        build:
+          origin_filename: /User/pipeline_with_serving.ipynb
+          base_image: quay.io/mlrun/mlrun
+          functionSourceCode: IyBHZW5lcmF0ZWQgYnkgbnVjbGlvLmV4cG9ydC5OdWNsaW9FeHBvcnRlcgoKZnJvbSBza2xlYXJuLmRhdGFzZXRzIGltcG9ydCBsb2FkX2lyaXMKZnJvbSBza2xlYXJuLm1vZGVsX3NlbGVjdGlvbiBpbXBvcnQgdHJhaW5fdGVzdF9zcGxpdApmcm9tIHhnYm9vc3QgaW1wb3J0IFhHQkNsYXNzaWZpZXIKaW1wb3J0IG1scnVuCmltcG9ydCBwaWNrbGUKZGVmIGFpaHVicXFmeGdkcHBkaWt3enlhKGNvbnRleHQ6IG1scnVuLk1MQ2xpZW50Q3R4KToKCWRhdGFzZXQgPSBsb2FkX2lyaXMoYXNfZnJhbWU9VHJ1ZSkKCWNsZiA9IFhHQkNsYXNzaWZpZXIobl9lc3RpbWF0b3JzPTIsIG1heF9kZXB0aD0yLCBsZWFybmluZ19yYXRlPTEsIG9iamVjdGl2ZT0iYmluYXJ5OmxvZ2lzdGljIikKCVgseSA9IGRhdGFzZXQuZGF0YSwgZGF0YXNldC50YXJnZXQKCVhfdHJhaW4sIHhfdGVzdCwgeV90cmFpbiwgeV90ZXN0ID0gdHJhaW5fdGVzdF9zcGxpdChYLCB5LCB0cmFpbl9zaXplPTAuOCwgdGVzdF9zaXplPTAuMiwgcmFuZG9tX3N0YXRlPTApCgljbGYuZml0KFhfdHJhaW4sIHlfdHJhaW4pCgljb250ZXh0LmxvZ19tb2RlbCgiY2xmX21vZGVsIiwgYm9keT1waWNrbGUuZHVtcHMoY2xmKSwgbW9kZWxfZmlsZT0iY2xmLnBrbCIpCgo=
+          requirements:
+          - xgboost
+        default_handler: ''
+        image: ''
+        description: ''
+        command: ''
+        entry_points:
+          aihubqqfxgdppdikwzya:
+            has_varargs: false
+            lineno: 8
+            name: aihubqqfxgdppdikwzya
+            parameters:
+            - name: context
+              type: MLClientCtx
+            has_kwargs: false
+            doc: ''
+        disable_auto_mount: false
+      verbose: false
+      kind: job
+      metadata:
+        tag: latest
+        name: nrqhh
+  - name: serving
+    spec:
+      spec:
+        max_replicas: 4
+        source: ''
+        build:
+          requirements:
+          - xgboost
+        disable_auto_mount: false
+        description: ''
+        base_image_pull: false
+        image: quay.io/mlrun/mlrun
+        function_kind: serving_v2
+        min_replicas: 1
+      verbose: false
+      kind: serving
+      metadata:
+        tag: latest
+        name: serving
+  source: /User/test/proj1
+  workflows:
+  - name: iris_workflow
+    path: ./workflow.py
+  desired_state: online
+  load_source_on_run: false
+kind: project
+metadata:
+  created: '2024-05-06T12:18:26.603000'
+  name: nzvjtyzgeh
+status:
+  state: online
